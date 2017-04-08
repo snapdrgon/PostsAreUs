@@ -10,13 +10,26 @@
                     type="text"
                     class="form-control"
                     formControlName="userName">
+                   <div *ngIf="userAddForm.controls.userName.touched && userAddForm.controls.userName.errors">
+                        <div *ngIf="userAddForm.controls.userName.errors.required" class="alert alert-danger">
+                                A name is required.
+                        </div>
+                        <div *ngIf="userAddForm.controls.userName.errors.minlength" class="alert alert-danger">
+                                The name must be a minimum of {{minLength}} characters in length.
+                        </div>
+                    </div>
                 <label for="email">Email</label>
                 <input 
                     id="email"
                     type="text"
                     class="form-control"
                     formControlName="email">
-                <label for="phone">Phone</label>
+                    <div *ngIf="userAddForm.controls.email.touched && userAddForm.controls.email.errors">
+                        <div *ngIf="userAddForm.controls.email.errors.emailInvalid" class="alert alert-danger">
+                                The email address entered is invalid.
+                        </div>
+                    </div>
+               <label for="phone">Phone</label>
                 <input 
                     id="phone"
                     type="text"
@@ -50,6 +63,7 @@
                     class="form-control"
                     formControlName="zipcode">
             </fieldset>
+            <br/>
             <button class='btn btn-primary' type='submit'>Add User</button>
         </form>
     </div>
