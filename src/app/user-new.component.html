@@ -9,7 +9,8 @@
                     id="userName"
                     type="text"
                     class="form-control"
-                    formControlName="userName">
+                    formControlName="userName"
+                    placeholder="Enter user name (minimum length {{minLength}})">
                    <div *ngIf="userAddForm.controls.userName.touched && userAddForm.controls.userName.errors">
                         <div *ngIf="userAddForm.controls.userName.errors.required" class="alert alert-danger">
                                 A name is required.
@@ -23,7 +24,8 @@
                     id="email"
                     type="text"
                     class="form-control"
-                    formControlName="email">
+                    formControlName="email"
+                    placeholder="Enter valid email address">
                     <div *ngIf="userAddForm.controls.email.touched && userAddForm.controls.email.errors">
                         <div *ngIf="userAddForm.controls.email.errors.emailInvalid" class="alert alert-danger">
                                 The email address entered is invalid.
@@ -34,7 +36,13 @@
                     id="phone"
                     type="text"
                     class="form-control"
-                    formControlName="phone">
+                    formControlName="phone"
+                    placeholder="Enter valid phone number e.g. (555)555-5555 x55">
+                    <div *ngIf="userAddForm.controls.phone.touched && userAddForm.controls.phone.errors">
+                        <div *ngIf="userAddForm.controls.phone.errors.phoneNumberInvalid" class="alert alert-danger">
+                                The phone number entered is invalid.
+                        </div>
+                    </div>
             </fieldset>
             <fieldset>
                 <legend>Address</legend>
@@ -43,28 +51,49 @@
                     id="street"
                     type="text"
                     class="form-control"
-                    formControlName="street">
+                    formControlName="street"
+                    placeholder="Enter street address">
+                   <div *ngIf="userAddForm.controls.street.touched && userAddForm.controls.street.errors">
+                        <div *ngIf="userAddForm.controls.street.errors.required" class="alert alert-danger">
+                                The street is required.
+                        </div>
+                    </div>
                 <label for="suite">Suite</label>
                 <input 
                     id="suite"
                     type="text"
                     class="form-control"
-                    formControlName="suite">
+                    formControlName="suite"
+                    placeholder="Enter suite (Optional)">
                 <label for="suite">City</label>
                 <input 
                     id="City"
                     type="text"
                     class="form-control"
-                    formControlName="city">
+                    formControlName="city"
+                    placeholder="Enter city">
+                   <div *ngIf="userAddForm.controls.city.touched && userAddForm.controls.city.errors">
+                        <div *ngIf="userAddForm.controls.city.errors.required" class="alert alert-danger">
+                                The city is required.
+                        </div>
+                    </div>
+
             <label for="zipcode">Zip Code</label>
                 <input 
                     id="zipcode"
                     type="text"
                     class="form-control"
-                    formControlName="zipcode">
+                    formControlName="zipcode"
+                    placeholder="Enter valid zip code">
+                    <div *ngIf="userAddForm.controls.zipcode.touched && userAddForm.controls.zipcode.errors">
+                        <div *ngIf="userAddForm.controls.zipcode.errors.zipcodeInvalid" class="alert alert-danger">
+                                The zipcode entered is invalid.
+                        </div>
+                    </div>
+
             </fieldset>
             <br/>
-            <button class='btn btn-primary' type='submit'>Add User</button>
+            <button class='btn btn-primary' [disabled]="!userAddForm.valid" type='submit'>Add User</button>
         </form>
     </div>
 </div>

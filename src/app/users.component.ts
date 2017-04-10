@@ -11,8 +11,10 @@ import {User, UserDto} from './user';
 export class UsersComponent implements OnInit{
     users: UserDto[] = [];
     constructor (private _userService:UserService) {}
+    isLoading = false;
 
     ngOnInit() {
+       this.isLoading = true;
         this._userService.getUsers()
         .subscribe(x=>{
             x.forEach(user=>{
@@ -20,6 +22,7 @@ export class UsersComponent implements OnInit{
             })
         });
         console.log(this.users);
+        this.isLoading = false;
     }
 
 }

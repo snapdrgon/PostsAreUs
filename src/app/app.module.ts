@@ -8,7 +8,7 @@ import {UsersComponent} from './users.component';
 import {UserNewComponent} from './user-new.component';
 import {routing} from './app.router';
 import {UserService} from './user.service';
-
+import {UnsavedDataGuard} from './unsaved-data.service';
 
 import { AppComponent } from './app.component';
 
@@ -27,7 +27,7 @@ import { AppComponent } from './app.component';
     HttpModule,
     routing
   ],
-  providers: [UserService],
+  providers: [UserService, UnsavedDataGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
