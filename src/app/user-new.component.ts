@@ -70,10 +70,10 @@ export class UserNewComponent implements OnInit, OnDestroy{
         })
         this.title = isNaN(this.id) ? 'Add a User':'Edit a User';
         if (!isNaN(this.id)) {
-            console.log('oops 1');
+           // console.log('oops 1');
             this._userService.getUser(this.id)
             .subscribe(x=>{this.user = x;
-                console.log(this.user);
+           //     console.log(this.user);
             })
         }
     }
