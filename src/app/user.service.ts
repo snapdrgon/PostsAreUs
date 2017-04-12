@@ -19,4 +19,12 @@ export class UserService {
         return userObservable;
     }
 
+    getUser(id:number) : Observable<User> {
+        var userObservable = this._http.get(this._url)
+        .flatMap((resp)=>resp.json())
+        .filter((user:User)=>user.id===id);
+     
+        return userObservable;
+    }
+
 } 

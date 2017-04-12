@@ -12,6 +12,8 @@ export const routing = RouterModule.forRoot([
     {path:'users/new', 
     component: UserNewComponent,
     canDeactivate:[UnsavedDataGuard]},
+    {path:'users/new/:id', 
+    component: UserNewComponent},    
     {path:'posts', component: PostsComponent},    
     {path:'**', component: HomeComponent},    
 ]);
