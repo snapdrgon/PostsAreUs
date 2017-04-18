@@ -16,34 +16,12 @@ export class UserNewComponent implements OnInit, OnDestroy{
     userAddForm:FormGroup;
     minLength = 5;
     title:string;
+    submitCaption:string;
      id:number;
     subscription;
 
-    user:User = 
-     {
-       id : -1 ,
-       name :'' ,
-       username : '' ,
-       email :'' ,
-       address : {
-         street : '' ,
-         suite : '' ,
-         city : '' ,
-         zipcode : '' ,
-       geo : {
-         lat : '' ,
-         lng : ''
-       }
-      },
-      phone : '',
-      website : '' ,
-      company : {
-        name :  '',
-        catchPhrase : '' ,
-        bs : ''
-      }
-    };
-
+    user = new User();
+   
     constructor(fb:FormBuilder, private _router:Router, 
     private _route:ActivatedRoute, private _userService: UserService ) {
         this.userAddForm = fb.group({
@@ -69,11 +47,14 @@ export class UserNewComponent implements OnInit, OnDestroy{
             this.id = +param['id'];
         })
         this.title = isNaN(this.id) ? 'Add a User':'Edit a User';
+        this.submitCaption = isNaN(this.id) ? 'Add User':'Update User';
         if (!isNaN(this.id)) {
-            console.log('oops 1');
             this._userService.getUser(this.id)
-            .subscribe(x=>{this.user = x;
-                console.log(this.user);
+            .subscribe(x=>{this.user = x ,  
+            response=>{
+                if (response.status==404) {
+                    this._router.navigate(['not-found']);
+                }}
             })
         }
     }
@@ -81,6 +62,16 @@ export class UserNewComponent implements OnInit, OnDestroy{
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
+
+    onUpdate() {
+        console.log(this.user);
+
+        if (!isNaN(this.id)) 
+            this._userService.updateUser(this.user);
+        else
+            this._userService.addUser(this.user);
+    }
+
 
    
 }

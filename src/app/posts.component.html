@@ -1,1 +1,33 @@
 <h2>Posts</h2>
+<!--<div *ngIf="isLoading"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>-->
+<spinner [visible]="isLoading"></spinner>
+<div class="col-md-6">
+<ul class="posts list-group">
+  <li *ngFor="let post of posts; let i = index;"class="list-group-item" (click)="onClick(i)">{{post.title}}</li>
+</ul>
+</div>
+
+<div class="col-md-6" *ngIf="showPanel">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{title}}</h3>
+    </div>
+    <div class="panel-body">
+      {{body}}
+    </div>
+  </div>
+  <spinner [visible]="showSpinner"></spinner>
+  <div class="media">
+    <div *ngFor="let comment of postComments; let i = index;">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object profile" src="http://lorempixel.com/80/80/people?random={{i}}" alt="comment.name">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{comment.name}}</h4>
+        {{comment.body}}
+      </div>
+    </div>
+</div>
+</div>

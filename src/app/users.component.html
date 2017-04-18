@@ -1,5 +1,5 @@
 <h2>Users</h2>
-<div *ngIf="isLoading"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>
+<spinner [visible]="isLoading"></spinner>
 <p>
     <a class="btn btn-primary" routerLink="new">Add User</a>
 </p>
@@ -17,7 +17,7 @@
                 <td>{{user.name}}</td>
                <td>{{user.email}}</td>
                <td ><a [routerLink]="['new', i+1]"><i class="glyphicon glyphicon-edit"></i></a></td>
-               <td><i class="glyphicon glyphicon-remove"></i></td>
+               <td><i class="glyphicon glyphicon-remove delete" (click)="deleteUser(i+1, user.name)"></i></td>
             </tr>
         </tbody>
 </table>

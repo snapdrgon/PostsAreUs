@@ -100,7 +100,7 @@
 
             </fieldset>
             <br/>
-            <button class='btn btn-primary' [disabled]="!userAddForm.valid" type='submit'>Add User</button>
+            <button class='btn btn-primary' [disabled]="!userAddForm.valid" type='submit' (click)="onUpdate()">{{submitCaption}}</button>
         </form>
     </div>
 </div>

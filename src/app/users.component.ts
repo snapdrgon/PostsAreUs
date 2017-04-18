@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from './user.service'
 import {User, UserDto} from './user';
+import {SpinnerComponent} from './spinner.component';
 
 @Component({
     selector: 'users',
@@ -9,7 +10,7 @@ import {User, UserDto} from './user';
 })
 
 export class UsersComponent implements OnInit{
-    users: UserDto[] = [];
+    users: User[] = [];
     constructor (private _userService:UserService) {}
     isLoading = false;
 
@@ -18,11 +19,19 @@ export class UsersComponent implements OnInit{
         this._userService.getUsers()
         .subscribe(x=>{
             x.forEach(user=>{
-                this.users.push({name:user.name, email:user.email});
+                this.users.push(user);
             })
         });
         console.log(this.users);
         this.isLoading = false;
+    }
+
+     deleteUser(id:number, user: string) {
+        console.log(id);   
+        if (confirm('Are you sure you want to delete user:' + user))  {
+            this.users.splice(id-1,1); //remove row
+            this._userService.deleteUser(id);
+        }
     }
 
 }

@@ -8,7 +8,10 @@ import {UsersComponent} from './users.component';
 import {UserNewComponent} from './user-new.component';
 import {routing} from './app.router';
 import {UserService} from './user.service';
+import {PostService} from './post.service';
 import {UnsavedDataGuard} from './unsaved-data.service';
+import {NotFoundComponent} from './not-found.component';
+import {SpinnerComponent} from './spinner.component';
 
 import { AppComponent } from './app.component';
 
@@ -18,7 +21,9 @@ import { AppComponent } from './app.component';
     HomeComponent,
     PostsComponent,
     UsersComponent,
-    UserNewComponent
+    UserNewComponent,
+    NotFoundComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,7 @@ import { AppComponent } from './app.component';
     HttpModule,
     routing
   ],
-  providers: [UserService, UnsavedDataGuard],
+  providers: [UserService, UnsavedDataGuard, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
