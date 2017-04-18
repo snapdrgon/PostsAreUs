@@ -49,19 +49,12 @@ export class UserNewComponent implements OnInit, OnDestroy{
         this.title = isNaN(this.id) ? 'Add a User':'Edit a User';
         this.submitCaption = isNaN(this.id) ? 'Add User':'Update User';
         if (!isNaN(this.id)) {
-<<<<<<< HEAD
             this._userService.getUser(this.id)
             .subscribe(x=>{this.user = x ,  
             response=>{
                 if (response.status==404) {
                     this._router.navigate(['not-found']);
                 }}
-=======
-           // console.log('oops 1');
-            this._userService.getUser(this.id)
-            .subscribe(x=>{this.user = x;
-           //     console.log(this.user);
->>>>>>> 362f68e9d2e91c7ca1ede9680ca0a9ec980bbac6
             })
         }
     }
