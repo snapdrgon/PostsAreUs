@@ -1,9 +1,12 @@
 <h2>Posts</h2>
-<!--<div *ngIf="isLoading"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>-->
 <spinner [visible]="isLoading"></spinner>
 <div class="col-md-6">
+  <select class="form-control" (change)="onChange($event.target.value)">
+    <option *ngFor="let usr of users; let i = index;" [value]="usr.id">{{usr.name}}</option>
+  </select>
+  <br/>
 <ul class="posts list-group">
-  <li *ngFor="let post of posts; let i = index;"class="list-group-item" (click)="onClick(i)">{{post.title}}</li>
+  <li *ngFor="let post of posts | matchesPost:filterId; let i = index;"class="list-group-item" (click)="onClick(post.id, post.userId)">{{post.title}}</li>
 </ul>
 </div>
 

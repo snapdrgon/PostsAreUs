@@ -14,8 +14,7 @@ private _url = "https://jsonplaceholder.typicode.com/posts/";
     getUsers() : Observable<Post[]> {
         var userObservable = this._http.get(this._url)
         .map(resp=>resp.json());
-
-       // userObservable.subscribe(x=>console.log(x));     
+  
         return userObservable;
     }
 
@@ -24,9 +23,7 @@ private _url = "https://jsonplaceholder.typicode.com/posts/";
         var urlComment = this._url + index + '/comments';
         var userObservable = this._http.get(urlComment)
         .map(resp=>resp.json());
-     //   console.log(userObservable);
 
-       // userObservable.subscribe(x=>console.log(x));     
         return userObservable;
     }
 

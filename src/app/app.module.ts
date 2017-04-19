@@ -12,6 +12,7 @@ import {PostService} from './post.service';
 import {UnsavedDataGuard} from './unsaved-data.service';
 import {NotFoundComponent} from './not-found.component';
 import {SpinnerComponent} from './spinner.component';
+import {MatchesPostPipe} from './post.pipe';
 
 import { AppComponent } from './app.component';
 
@@ -23,7 +24,8 @@ import { AppComponent } from './app.component';
     UsersComponent,
     UserNewComponent,
     NotFoundComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    MatchesPostPipe
   ],
   imports: [
     BrowserModule,

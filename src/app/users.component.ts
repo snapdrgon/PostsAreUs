@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from './user.service'
-import {User, UserDto} from './user';
+import {User} from './user';
 import {SpinnerComponent} from './spinner.component';
 
 @Component({
